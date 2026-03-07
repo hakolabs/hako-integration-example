@@ -1,0 +1,57 @@
+{
+  "name": "hako-integration-example",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Public CLI onboarding examples for the Hako Integration API.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hakolabs/hako-integration-example.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hakolabs/hako-integration-example/issues"
+  },
+  "homepage": "https://github.com/hakolabs/hako-integration-example#readme",
+  "packageManager": "npm@10.9.2",
+  "keywords": [
+    "hako",
+    "defi",
+    "integration",
+    "viem",
+    "cli"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.typecheck.json --noEmit",
+    "lint": "eslint src test --ext .ts",
+    "test": "vitest run",
+    "verify": "npm run lint && npm run typecheck && npm run test && npm run build",
+    "cli": "tsx src/cli.ts",
+    "doctor": "tsx src/cli.ts doctor",
+    "strategy:list": "tsx src/cli.ts strategy:list",
+    "quote:deposit": "tsx src/cli.ts quote:deposit",
+    "deposit": "tsx src/cli.ts deposit",
+    "action:get": "tsx src/cli.ts action:get",
+    "action:watch": "tsx src/cli.ts action:watch",
+    "position": "tsx src/cli.ts position",
+    "quote:withdraw": "tsx src/cli.ts quote:withdraw",
+    "withdraw": "tsx src/cli.ts withdraw"
+  },
+  "dependencies": {
+    "commander": "^14.0.1",
+    "dotenv": "^17.2.3",
+    "viem": "^2.39.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.43.0",
+    "@typescript-eslint/parser": "^8.43.0",
+    "eslint": "^9.35.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
