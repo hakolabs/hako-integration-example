@@ -99,21 +99,6 @@ export interface QuoteAmount {
   readonly amountAtomic: string;
 }
 
-export interface QuoteFees {
-  readonly totalEstimatedUsd: string;
-  readonly items: Array<Record<string, unknown>>;
-}
-
-export interface QuoteRouteItem {
-  readonly step: string;
-  readonly network: SupportedChain;
-  readonly kind: string;
-}
-
-export interface QuoteTiming {
-  readonly estimatedCompletionSeconds: number;
-}
-
 export interface DepositQuoteResponse {
   readonly strategyId: string;
   readonly fromAccount: string;
@@ -126,8 +111,6 @@ export interface DepositQuoteResponse {
     readonly sharesOut: QuoteAmount;
     readonly minSharesOut: QuoteAmount;
   };
-  readonly fees: QuoteFees;
-  readonly timing: QuoteTiming;
 }
 
 export interface WithdrawQuoteResponse {
@@ -151,9 +134,6 @@ export interface WithdrawQuoteResponse {
     readonly network: SupportedChain;
     readonly assetId: string;
   };
-  readonly fees: QuoteFees;
-  readonly route: QuoteRouteItem[];
-  readonly timing: QuoteTiming;
 }
 
 export interface ActionTxPayload {

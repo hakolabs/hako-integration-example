@@ -50,14 +50,14 @@ function asTypedDataFieldArray(value: unknown, field: string): TypedDataField[] 
   });
 }
 
-function normalizeTypedDataValue(type: string, value: unknown): unknown {
+function parseTypedDataValue(type: string, value: unknown): unknown {
   if (type.endsWith("[]")) {
     if (!Array.isArray(value)) {
       throw new Error(`Expected array value for type ${type}`);
     }
 
     const itemType = type.slice(0, -2);
-    return value.map((item) => normalizeTypedDataValue(itemType, item));
+    return value.map((item) => parseTypedDataValue(itemType, item));
   }
 
   if (type === "address") {
@@ -77,7 +77,7 @@ function normalizeTypedDataValue(type: string, value: unknown): unknown {
       throw new Error(`typedData.message numeric value for ${type} is invalid`);
     }
 
-    return BigInt(value);
+    return typeof value === "string" ? value : String(value);
   }
 
   if (type.startsWith("bytes")) {
@@ -135,10 +135,10 @@ export function parseTypedDataJson(authorizationJson: string): ParsedTypedData {
     ]),
   );
 
-  const normalizedMessage = Object.fromEntries(
+  const parsedMessage = Object.fromEntries(
     primaryFields.map((field) => [
       field.name,
-      normalizeTypedDataValue(field.type, messageRaw[field.name]),
+      parseTypedDataValue(field.type, messageRaw[field.name]),
     ]),
   );
 
@@ -165,7 +165,7 @@ export function parseTypedDataJson(authorizationJson: string): ParsedTypedData {
     domain: normalizedDomain,
     types,
     primaryType,
-    message: normalizedMessage,
+    message: parsedMessage,
   };
 }
 

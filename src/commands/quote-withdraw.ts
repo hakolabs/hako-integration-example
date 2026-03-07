@@ -41,8 +41,6 @@ export async function runQuoteWithdrawCommand(
     `- Min amount out: ${response.data.expected.minAmountOut.amount} (${response.data.expected.minAmountOut.amountAtomic} atomic)`,
     `- Authorization method: ${response.data.authorization.method}`,
     `- Gasless: ${response.data.authorization.gasless}`,
-    `- Estimated fees USD: ${response.data.fees.totalEstimatedUsd}`,
-    `- Estimated completion: ${response.data.timing.estimatedCompletionSeconds}s`,
     `- Expires at: ${response.data.expiresAt}`,
     ...(response.requestId ? [`Request ID: ${response.requestId}`] : []),
   ];

@@ -32,8 +32,6 @@ export async function runQuoteDepositCommand(
     `- Strategy: ${response.data.strategyId}`,
     `- Shares out: ${response.data.expected.sharesOut.amount} (${response.data.expected.sharesOut.amountAtomic} atomic)`,
     `- Min shares out: ${response.data.expected.minSharesOut.amount} (${response.data.expected.minSharesOut.amountAtomic} atomic)`,
-    `- Estimated fees USD: ${response.data.fees.totalEstimatedUsd}`,
-    `- Estimated completion: ${response.data.timing.estimatedCompletionSeconds}s`,
     ...(response.requestId ? [`Request ID: ${response.requestId}`] : []),
   ];
 

@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
+import { privateKeyToAccount } from "viem/accounts";
 import { runWithdrawCommand } from "../src/commands/withdraw.js";
 import { parseTypedDataJson } from "../src/lib/wallet.js";
 import type { WithdrawActionResponse } from "../src/lib/hako-api.js";
@@ -70,8 +71,35 @@ describe("withdraw command", () => {
     expect(typedData.message.owner).toBe(
       "0x1111111111111111111111111111111111111111",
     );
-    expect(typedData.message.nonce).toBe(1n);
-    expect(typedData.message.dstChainId).toBe(8453n);
+    expect(typedData.message.nonce).toBe("1");
+    expect(typedData.message.dstChainId).toBe("8453");
+  });
+
+  it("produces the same signature for string and bigint numeric fields", async () => {
+    const account = privateKeyToAccount(
+      "0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+    );
+    const parsedTypedData = parseTypedDataJson(authorizationJson);
+    const normalizedTypedData = {
+      ...parsedTypedData,
+      message: {
+        ...parsedTypedData.message,
+        dstChainId: 8453n,
+        amountNormalized: 1000000n,
+        maxShares: 1100000n,
+        nonce: 1n,
+        deadline: 9999999999n,
+      },
+    };
+
+    const parsedSignature = await account.signTypedData(
+      parsedTypedData as Parameters<typeof account.signTypedData>[0],
+    );
+    const normalizedSignature = await account.signTypedData(
+      normalizedTypedData as Parameters<typeof account.signTypedData>[0],
+    );
+
+    expect(parsedSignature).toBe(normalizedSignature);
   });
 
   it("signs typed-data and authorizes the withdrawal action", async () => {
