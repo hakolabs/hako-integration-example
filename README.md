@@ -35,7 +35,7 @@ cp .env.example .env
 Recommended production value:
 
 ```bash
-HAKO_API=https://app.hakolabs.app/v1
+HAKO_API=https://api.hakolabs.app/v1
 ```
 
 ## Environment
@@ -43,7 +43,7 @@ HAKO_API=https://app.hakolabs.app/v1
 Required variables:
 
 - `HAKO_API`
-  Accepts either the API origin, such as `https://app.hakolabs.app`, or a URL that already includes `/v1`.
+  Accepts either the API origin, such as `https://api.hakolabs.app`, or a URL that already includes `/v1`.
 - `PARTNER_KEY`
   Required for authenticated partner commands such as quotes, positions, and actions.
 - `PRIVATE_KEY`
@@ -73,8 +73,8 @@ Example output:
 
 ```text
 Hako Integration Example doctor
-- Raw HAKO_API: https://app.hakolabs.app/v1
-- Normalized API base URL: https://app.hakolabs.app/v1
+- Raw HAKO_API: https://api.hakolabs.app/v1
+- Normalized API base URL: https://api.hakolabs.app/v1
 - Public health check: ok (request 11111111-1111-4111-8111-111111111111)
 - Public strategy check: ok (1 strategies: stable_vault) (request 22222222-2222-4222-8222-222222222222)
 - Authenticated API check: ok for 0x1234...abcd (0 position items) (request 33333333-3333-4333-8333-333333333333)
@@ -287,11 +287,11 @@ This example combines those responsibilities into a single CLI for learning and 
 
 ### Wrong hostname
 
-Use `app.hakolabs.app`, not `app.hakoapp.app`.
+Use `api.hakolabs.app`, not `app.hakoapp.app`.
 
 ### `.app` domain with `http`
 
-Use `https://app.hakolabs.app/v1`. The CLI normalizes `.app` domains to HTTPS, but the recommended value is already HTTPS.
+Use `https://api.hakolabs.app/v1`. The CLI normalizes `.app` domains to HTTPS, but the recommended value is already HTTPS.
 
 ### Missing `PARTNER_KEY`
 

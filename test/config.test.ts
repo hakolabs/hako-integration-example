@@ -23,8 +23,8 @@ describe("config", () => {
   });
 
   it("upgrades .app domains to https automatically", () => {
-    expect(normalizeHakoApiBaseUrl("http://app.hakolabs.app/v1")).toBe(
-      "https://app.hakolabs.app/v1",
+    expect(normalizeHakoApiBaseUrl("http://api.hakolabs.app/v1")).toBe(
+      "https://api.hakolabs.app/v1",
     );
   });
 
@@ -43,11 +43,11 @@ describe("config", () => {
 
   it("loads api-only config without partner or private key", () => {
     const config = loadApiConfig({
-      HAKO_API: "https://app.hakolabs.app",
+      HAKO_API: "https://api.hakolabs.app",
     });
 
-    expect(config.rawHakoApiUrl).toBe("https://app.hakolabs.app");
-    expect(config.hakoApiBaseUrl).toBe("https://app.hakolabs.app/v1");
+    expect(config.rawHakoApiUrl).toBe("https://api.hakolabs.app");
+    expect(config.hakoApiBaseUrl).toBe("https://api.hakolabs.app/v1");
   });
 
   it("loads optional partner and wallet config when omitted", () => {

@@ -287,7 +287,7 @@ function buildNetworkErrorMessage(url: string, error: unknown): {
 
     if (causeCode === "ENOTFOUND" && hostname) {
       return {
-        message: `Could not resolve HAKO_API host ${hostname}. Check the hostname. The public Hako Integration API is available at https://app.hakolabs.app/v1.`,
+        message: `Could not resolve HAKO_API host ${hostname}. Check the hostname. The public Hako Integration API is available at https://api.hakolabs.app/v1.`,
         details,
       };
     }

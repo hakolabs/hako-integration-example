@@ -12,18 +12,18 @@ import {
 describe("runtime", () => {
   it("creates a public runtime without PRIVATE_KEY or PARTNER_KEY", () => {
     const runtime = createPublicApiRuntime({
-      HAKO_API: "https://app.hakolabs.app",
+      HAKO_API: "https://api.hakolabs.app",
     });
 
     expect(runtime.apiConfig.hakoApiBaseUrl).toBe(
-      "https://app.hakolabs.app/v1",
+      "https://api.hakolabs.app/v1",
     );
     expect(runtime.partnerKey).toBeUndefined();
   });
 
   it("creates a partner runtime without PRIVATE_KEY", () => {
     const runtime = createPartnerApiRuntime({
-      HAKO_API: "https://app.hakolabs.app",
+      HAKO_API: "https://api.hakolabs.app",
       PARTNER_KEY: "partner-key",
     });
 

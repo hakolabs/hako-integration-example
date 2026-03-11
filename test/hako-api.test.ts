@@ -27,7 +27,7 @@ describe("HakoApiClient network errors", () => {
     await expect(client.getStrategies()).rejects.toMatchObject({
       code: "NETWORK_ERROR",
       message:
-        "Could not resolve HAKO_API host app.hakoapp.app. Check the hostname. The public Hako Integration API is available at https://app.hakolabs.app/v1.",
+        "Could not resolve HAKO_API host app.hakoapp.app. Check the hostname. The public Hako Integration API is available at https://api.hakolabs.app/v1.",
       details: {
         causeCode: "ENOTFOUND",
         hostname: "app.hakoapp.app",

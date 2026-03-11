@@ -36,8 +36,8 @@ describe("doctor command", () => {
     };
 
     const result = await runDoctorCommand({
-      rawHakoApiUrl: "https://app.hakolabs.app",
-      normalizedHakoApiBaseUrl: "https://app.hakolabs.app/v1",
+      rawHakoApiUrl: "https://api.hakolabs.app",
+      normalizedHakoApiBaseUrl: "https://api.hakolabs.app/v1",
       publicApi,
     });
 
@@ -69,8 +69,8 @@ describe("doctor command", () => {
     };
 
     const result = await runDoctorCommand({
-      rawHakoApiUrl: "http://app.hakolabs.app/v1",
-      normalizedHakoApiBaseUrl: "https://app.hakolabs.app/v1",
+      rawHakoApiUrl: "http://api.hakolabs.app/v1",
+      normalizedHakoApiBaseUrl: "https://api.hakolabs.app/v1",
       publicApi,
       authenticatedApi,
       authenticatedAddress: "0x1111111111111111111111111111111111111111",
@@ -81,7 +81,7 @@ describe("doctor command", () => {
       "0x1111111111111111111111111111111111111111",
     );
     expect(result.lines).toContain(
-      "- Normalized API base URL: https://app.hakolabs.app/v1 (normalized)",
+      "- Normalized API base URL: https://api.hakolabs.app/v1 (normalized)",
     );
     expect(result.lines).toContain(
       "- Authenticated API check: ok for 0x1111111111111111111111111111111111111111 (0 position items) (request req-position)",
